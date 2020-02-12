@@ -128,4 +128,19 @@ EOT;
 
         return $players;
     }
+
+    /**
+     * Get all active players
+     *
+     * @return array
+     */
+    public function getAllActivePlayers()
+    {
+        $qb = $this->createQueryBuilder('p');
+
+        return $qb->select('p')
+            ->where('p.enabled = TRUE')
+            ->getQuery()
+            ->getResult();
+    }
 }

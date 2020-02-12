@@ -61,6 +61,18 @@ class DataController extends BaseController
     }
 
     /**
+     * @Annotations\Get("/active/players")
+     */
+    public function getActivePlayersAction()
+    {
+        $players = $this->repos()->getPlayerRepository()->getAllActivePlayers();
+        
+        return [
+            'players' => !empty($players) ? $players : [],
+        ];
+    }
+
+    /**
      * @Annotations\Get("/news")
      */
     public function getNewsAction()
